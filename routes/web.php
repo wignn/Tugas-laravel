@@ -21,6 +21,9 @@ Route::middleware('auth')->group(function () {
 // Public route - dapat diakses tanpa login
 Route::get('/data/{id?}', [ProductController::class, 'index'])->where('id', '[0-9]+');
 
+
+Route::get('/produk/{parameter}', [ProductController::class, 'produk'])->where('parameter', '[0-9]+');
+
 // Routes yang hanya bisa diakses Admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [ProductController::class, 'adminDashboard'])->name('admin.dashboard');

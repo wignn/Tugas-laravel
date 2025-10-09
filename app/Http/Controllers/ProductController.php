@@ -43,4 +43,19 @@ class ProductController extends Controller
         $user = Auth::user();
         return view('management.dashboard', compact('user'));
     }
+
+
+    public function produk($parameter)
+    {
+        $isOdd = $parameter % 2 !== 0;
+        
+        $alertType = $isOdd ? 'warning' : 'success';
+        $alertMessage = $isOdd ? 'Nilai ini adalah ganjil' : 'Nilai ini adalah genap';
+        
+        return view('produk', [
+            'parameter' => $parameter,
+            'alertType' => $alertType,
+            'alertMessage' => $alertMessage
+        ]);
+    }
 }
